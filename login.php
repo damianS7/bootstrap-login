@@ -8,11 +8,10 @@ if(!isset($post['username']) || !isset($post['password'])) {
 }
 
 if($post['username'] == "damianS7" && $post['password'] == '123456') {
-	_SESSION['user'] = 'damianS7';
-	$arr = array('sucess' => 'Login sucess');
+	$_SESSION['user'] = 'damianS7';
+	$arr = array('success' => 'Login sucess');
 } else {
 	$arr = array('error' => 'Invalid login');
 }	
-$arr = array('error' => 'Invalid login');
 echo json_encode($arr);
 ?>

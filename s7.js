@@ -38,12 +38,21 @@ function post() {
   })
    .then(function(data){ 
     console.log(data);
-    if(data['sucess']) {
-      console.log('logged!');
+    if(data['success']) {
+      document.getElementById('message_div').classList.add("alert-success");
+      document.getElementById('message').innerHTML = data['success'];
+      document.getElementById('message_div').style["display"] = "visible";
+
+      setTimeout(function () {
+        window.location.replace("logged.php");
+      }, 5000);
+      
     } else {
-      document.getElementById('error_message').innerHTML = data['error'];
+      document.getElementById('message_div').classList.add("alert-danger");
+      document.getElementById('message').innerHTML = data['error'];
+      document.getElementById('message_div').style["display"] = "visible";
     }
-    //window.location.replace("logged.php");
+    
   }).catch(function (err) {
     console.log('Failed to fetch page: ', err);
   });
