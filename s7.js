@@ -1,24 +1,13 @@
 window.onload = function () {
-
   loadPage('login.html', 'loader');
 };
 
 
 function loadPage(page, divId) {
   fetch(page).then(function (response) {
-    // When the page is loaded convert it to text
     return response.text()
   }).then(function (html) {
-    // Initialize the DOM parser
-    //var parser = new DOMParser();
-
-    // Parse the text
-    //var doc = parser.parseFromString(html, "text/html");
-
-    // You can now even select part of that html as you would in the regular DOM 
-    // Example:
     document.getElementById(divId).innerHTML = html;
-
   }).catch(function (err) {
     console.log('Failed to fetch page: ', err);
   }); 
@@ -26,12 +15,11 @@ function loadPage(page, divId) {
 }
 
 function post() {
-  //loadPage('danger.html', 'message_div');
+  
   var data = {
     "username": "damianS7",
     "email": "peter@klaven",
-    "post": "asdasd",
-    "password": "cityslicka"
+    "password": "123456"
   }
 
   var headers = {
@@ -45,10 +33,16 @@ function post() {
     body: JSON.stringify(data)
   })
    .then(function(response){ 
-    console.log(response); 
+    return response.json();
   })
    .then(function(data){ 
-    console.log(data)
+    console.log(data);
+    if(data['sucess']) {
+      console.log('logged!');
+    } else {
+      document.getElementById('error_message').innerHTML = data['error'];
+    }
+    //window.location.replace("logged.php");
   }).catch(function (err) {
     console.log('Failed to fetch page: ', err);
   });
