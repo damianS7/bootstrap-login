@@ -4,6 +4,7 @@ window.onload = function () {
 
 
 function loadPage(page, divId) {
+  console.log(page);
   fetch(page).then(function (response) {
     return response.text()
   }).then(function (html) {
