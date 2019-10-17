@@ -5,4 +5,3 @@ Theme usando bootstrap 4 para un sistema de login/registro. Uso de javascript/jQ
 - CSS
 - Javascript
 - Bootstrap 4
-- jQuery
